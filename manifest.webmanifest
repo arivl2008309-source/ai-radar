@@ -1,0 +1,19 @@
+{
+  "name": "AI 雷达",
+  "short_name": "AI 雷达",
+  "description": "AI 资讯 · 行业应用 · 论文速递 · 社区热帖，智能过滤，自动更新",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0e17",
+  "theme_color": "#0a0e17",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%236366f1'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='white'>%E2%9A%A1</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

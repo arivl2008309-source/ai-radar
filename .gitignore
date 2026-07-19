@@ -1,0 +1,7 @@
+# Logs
+*.log
+# WorkBuddy session data
+.workbuddy/
+# OS
+.DS_Store
+Thumbs.db
