@@ -25,9 +25,35 @@
     --accent: #4f46e5; --accent-2: #6366f1;
     --accent-glow: rgba(79,70,229,.12); --accent-soft: rgba(79,70,229,.08);
     --chip-bg: #f1f3f9;
-    --shadow-sm: 0 2px 8px rgba(79,70,229,.06);
-    --shadow-md: 0 8px 24px rgba(79,70,229,.09);
+  --shadow-sm: 0 2px 8px rgba(79,70,229,.06);
+  --shadow-md: 0 8px 24px rgba(79,70,229,.09);
   }
+}
+
+/* ---- 显式主题切换：JS 设置 <html data-theme="..."> 时生效，覆盖系统偏好 ---- */
+[data-theme="light"] {
+  --bg: #f0f2f8; --bg-sub: #e8ecf4; --panel: #fff;
+  --card: #fff; --card-hi: #f8fafc;
+  --text: #1a1f2e; --text-2: #374151;
+  --muted: #6b7280; --muted-2: #9ca3af;
+  --line: #e5eaf2; --line-2: #d8dfe8;
+  --accent: #4f46e5; --accent-2: #6366f1;
+  --accent-glow: rgba(79,70,229,.12); --accent-soft: rgba(79,70,229,.08);
+  --chip-bg: #f1f3f9;
+  --shadow-sm: 0 2px 8px rgba(79,70,229,.06);
+  --shadow-md: 0 8px 24px rgba(79,70,229,.09);
+}
+[data-theme="dark"] {
+  --bg: #0a0e17; --bg-sub: #0d1220; --panel: #111827;
+  --card: #151c2c; --card-hi: #1a2337;
+  --text: #e4e8f1; --text-2: #c8cfe0;
+  --muted: #7a8599; --muted-2: #555d70;
+  --line: #1f2937; --line-2: #28334a;
+  --accent: #6366f1; --accent-2: #818cf8;
+  --accent-glow: rgba(99,102,241,.20); --accent-soft: rgba(99,102,241,.10);
+  --chip-bg: #1a2235;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.25);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.35);
 }
 
 /* ---- Reset & Base ---- */
@@ -86,6 +112,18 @@ body::before {
   .brand h1 { font-size: 17px; }
   .tagline { display: none; }  /* 手机端省空间隐藏副标题 */
   .logo { width: 36px; height: 36px; font-size: 18px; border-radius: 11px; }
+
+  /* 手机端顶部区域紧凑化 */
+  .topbar { margin-bottom: 8px; gap: 8px; }
+  .top-actions { gap: 4px; }
+  .last-updated { margin-bottom: 6px; padding: 3px 10px; font-size: 10.5px; border-radius: 14px; }
+  .last-updated .refresh-btn { font-size: 10.5px; padding: 1px 6px; }
+  .ticker { height: 28px !important; margin-bottom: 6px !important; }
+  .ticker-label { font-size: 9px !important; padding: 0 6px !important; }
+  .tabs { margin-bottom: 6px; padding: 3px 4px; }
+  .tab { font-size: 12.5px; padding: 5px 10px; }
+  .toolbar { margin-bottom: 6px; }
+  .filterbar { margin-bottom: 6px; flex-wrap: wrap; }
 }
 .top-actions { display: flex; gap: 6px; flex-shrink: 0; }
 .icon-btn {
@@ -98,9 +136,26 @@ body::before {
   user-select: none; -webkit-user-select: none;
 }
 .icon-btn:hover, .icon-btn:active { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+
+/* 收藏按钮：文字+数字胶囊形，不受方形 icon-btn 宽度限制 */
+#favBtn {
+  width: auto; min-width: unset;
+  padding: 0 10px; gap: 4px;
+  white-space: nowrap; font-size: 12px; font-weight: 500;
+  border-radius: 20px; letter-spacing: .3px;
+}
+#favBtn b {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  background: var(--accent); color: #fff;
+  font-size: 11px; font-weight: 700; border-radius: 9px;
+  line-height: 1; margin-left: 2px;
+}
+
 @media (max-width: 559px) {
   .icon-btn { font-size: 13px; }
-  #favBtn b { display: none; }  /* 手机端收藏只显示图标不显数字标签 */
+  #favBtn { padding: 0 8px; font-size: 11px; }
+  #favBtn b { min-width: 16px; height: 16px; font-size: 10px; }  /* 手机端保留数字但更紧凑 */
 }
 
 /* ---- 最后更新时间戳 ---- */

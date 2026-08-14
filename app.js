@@ -474,7 +474,7 @@
       + '<h3>' + title + '</h3>'
       + hlHTML
       + '<p class="summary">' + summary + '</p>'
-      + (longSummary ? '<button class="expand-btn">展开 &#xFE3E;</button>' : '')
+      + (longSummary ? '<button class="expand-btn">展开 \u25BC</button>' : '')
       + '<div class="card-foot">'
       +   '<div class="src">' + avatarHTML(source) + '<span class="abs">' + source + '</span></div>'
       +   '<div class="foot-right">'
@@ -911,7 +911,7 @@
           e.stopPropagation();
           var p = card.querySelector(".summary");
           var expanded = p.classList.toggle("expanded");
-          expBtn.textContent = expanded ? "\u6536\u8D77 &#x25B4;" : "\u5C55\u5F00 &#xFE3E;";
+          expBtn.textContent = expanded ? "\u6536\u8D77 \u25B4" : "\u5C55\u5F00 \u25BC";
         });
       }
 
@@ -954,13 +954,6 @@
       localStorage.setItem("aiRadar_theme", next);
       btn.textContent = next === "dark" ? "\u2600\uFE0F" : "\u{1F319}";
     });
-    if (theme === "dark") {
-      document.documentElement.style.setProperty("--bg", "#0a0e17");
-      document.documentElement.style.setProperty("--bg-sub", "#0d1220");
-      document.documentElement.style.setProperty("--panel", "#111827");
-      document.documentElement.style.setProperty("--card", "#151c2c");
-      document.documentElement.style.setProperty("--card-hi", "#1a2337");
-    }
   }
 
   /* ===== 初始化 ===== */
