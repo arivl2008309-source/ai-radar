@@ -139,6 +139,7 @@ body::before {
 
 /* 收藏按钮：文字+数字胶囊形，不受方形 icon-btn 宽度限制 */
 #favBtn {
+  display: inline-flex; flex-direction: row; align-items: center; justify-content: center;
   width: auto; min-width: unset;
   padding: 0 10px; gap: 4px;
   white-space: nowrap; font-size: 12px; font-weight: 500;
