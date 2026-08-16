@@ -18,7 +18,7 @@
 
   // 自建 Cloudflare Worker 代理（部署后填入地址；留空则只用公共代理）
   // 部署教程见 cloudflare-worker.js 文件头注释
-  var WORKER_PROXY = ""; // 例如 https://ai-radar-proxy.xxx.workers.dev
+  var WORKER_PROXY = "https://ai-radar-proxy.arivl2008309.workers.dev";
 
   // 公共 CORS 代理（按优先级排列，自动故障转移）
   // 每个代理返回格式可能不同：{items:[...]} / {contents:"..."} / 原始文本
