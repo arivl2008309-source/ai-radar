@@ -16,6 +16,10 @@
   var ARXIV_BASE = "https://export.arxiv.org/api/query";
   var HN_BASE    = "https://hn.algolia.com/api/v1";
 
+  // 自建 Cloudflare Worker 代理（部署后填入地址；留空则只用公共代理）
+  // 部署教程见 cloudflare-worker.js 文件头注释
+  var WORKER_PROXY = ""; // 例如 https://ai-radar-proxy.xxx.workers.dev
+
   // 公共 CORS 代理（按优先级排列，自动故障转移）
   // 每个代理返回格式可能不同：{items:[...]} / {contents:"..."} / 原始文本
   var CORS_PROXIES = [
@@ -27,6 +31,11 @@
     function(u){ return "https://api.allorigins.win/get?url=" + encodeURIComponent(u); },   // 返回 {contents: "..."}
     function(u){ return "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(u); }
   ];
+  // 若配置了自建 Worker，则作为最高优先级（稳、快、可控），公共代理降级为兜底
+  if (WORKER_PROXY && WORKER_PROXY.trim()) {
+    var wp = WORKER_PROXY.trim().replace(/\/+$/, "");
+    CORS_PROXIES.unshift(function(u){ return wp + "/?url=" + encodeURIComponent(u); });
+  }
 
   // 经 CORS 代理取数据；asText=true 返回原始文本（arXiv XML）；失败自动切下一个代理
   async function fetchViaCors(target, asText) {
